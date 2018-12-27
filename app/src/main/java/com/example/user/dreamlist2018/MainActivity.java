@@ -1,5 +1,8 @@
 package com.example.user.dreamlist2018;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,33 +14,30 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    FragmentManager fragmentManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fragmentManager = getSupportFragmentManager();
+        List<Fragment> fList = fragmentManager.getFragments();
 
-        DreamManager manager = new DreamManager(this);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        Dream dream = new Dream();
-        dream.setTitle("aaa");
-        dream.setDescription("dream is ...");
+        if(fList.size() == 0){
 
-        String deadline = "2018-12-05";
-        dream.setDeadline(deadline);
-        dream.setCreatedate(Common.formatDate(new Date(), Common.DB_DATE_FORMAT));
+            //Default Fragment
+            transaction.add(R.id.fragment_area, new FgRegDream());
 
-        manager.addDream(dream);
+            transaction.commit();
 
-        List<Dream> list = manager.getDreamList();
-
-        for (Dream d : list){
-            Common.log("id:" + d.getId());
-            Common.log("title:" + d.getTitle());
-            Common.log("description:" + d.getDescription());
-            Common.log("deadline:" + d.getDeadline());
-            Common.log("createdate:" + d.getCreatedate());
         }
+
+
 
 
     }
