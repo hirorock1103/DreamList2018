@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         if(fList.size() == 0){
 
             //Default Fragment
-            transaction.add(R.id.fragment_area, new FgRegDream());
+            transaction.add(R.id.fragment_area, new FgTopPage());
+            //transaction.add()
 
             transaction.commit();
 
