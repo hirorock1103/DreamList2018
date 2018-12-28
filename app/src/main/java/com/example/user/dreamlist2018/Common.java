@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Common {
@@ -47,6 +48,36 @@ public class Common {
 
         return formatdate;
     }
+
+    /**
+     * 日付加算　減算
+     */
+    public static Date addDateFromToday(String target, int value){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+
+        Date date = new Date();
+
+        switch (target){
+            case "MONTH":
+                calendar.add(Calendar.MONTH, value);
+                break;
+            case "YEAR":
+                calendar.add(Calendar.YEAR, value);
+                break;
+            case "DAY":
+                calendar.add(Calendar.DATE, value);
+                break;
+        }
+
+        date = calendar.getTime();
+
+
+        return date;
+
+    }
+
 
     /**
      * log

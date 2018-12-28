@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
 
+    String mode = "TEST";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
         if(fList.size() == 0){
 
+            Bundle bundle = new Bundle();
+            bundle.putString("mode", mode);
+
+            Fragment fragment = new FgTopPage();
+            fragment.setArguments(bundle);
+
             //Default Fragment
-            transaction.add(R.id.fragment_area, new FgTopPage());
+            transaction.add(R.id.fragment_area, fragment);
             //transaction.add()
 
             transaction.commit();
