@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DreamManager extends MyDbHelper {
@@ -23,7 +24,7 @@ public class DreamManager extends MyDbHelper {
         values.put(DREAM_COLUMN_TITLE, dream.getTitle());
         values.put(DREAM_COLUMN_DESCRIPTION,dream.getDescription());
         values.put(DREAM_COLUMN_DEADLINE, dream.getDeadline());
-        values.put(DREAM_COLUMN_CREATEDATE, dream.getCreatedate());
+        values.put(DREAM_COLUMN_CREATEDATE, Common.formatDate(new Date(), Common.DB_DATE_FORMAT ));
 
         SQLiteDatabase db = getWritableDatabase();
         long insertId =  db.insert(TABLE_DREAM, null, values);

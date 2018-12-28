@@ -1,7 +1,9 @@
 package com.example.user.dreamlist2018;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
@@ -102,6 +104,9 @@ public class Dialog1 extends AppCompatDialogFragment {
                 if(insertId > 0){
                     Common.toast(getContext(), "Add Dream " + dream.getTitle());
                 }
+                Intent result = new Intent();
+                getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK,result );
+
 
             }
         });
