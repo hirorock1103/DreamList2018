@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FgTopPage.FgNoticeListener {
+public class MainActivity extends AppCompatActivity implements FgTopPage.FgNoticeListener, FgDreamList.FgNoticeListener {
 
 
     FragmentManager fragmentManager;
@@ -99,6 +99,30 @@ public class MainActivity extends AppCompatActivity implements FgTopPage.FgNotic
         transaction.add(R.id.fragment_area, newFragment);
         //transaction.add()
 
+        transaction.commit();
+
+    }
+
+    @Override
+    public void notice2(int dreamId) {
+        Common.log("notice2:" + dreamId);
+
+        Fragment newFragment = new FgDreamDetail();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        List<Fragment> list = fragmentManager.getFragments();
+        for (Fragment fragment : list){
+            transaction.remove(fragment);
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("dreamId", dreamId);
+
+        newFragment.setArguments(bundle);
+
+        //Default Fragment
+        transaction.add(R.id.fragment_area, newFragment);
+        //transaction.add()
         transaction.commit();
 
     }

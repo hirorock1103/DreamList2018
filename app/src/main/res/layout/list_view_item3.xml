@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout"
+    android:background="@drawable/border_bottom_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:plainpie="http://schemas.android.com/tools">
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="5dp"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:layout_marginBottom="5dp"-->
+    <!--app:cardUseCompatPadding="true"-->
+    <!--app:cardCornerRadius="5dp"-->
+    <!--&gt;-->
+
+    <!--<android.support.constraint.ConstraintLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--&gt;-->
+
+    <android.support.v7.widget.CardView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        android:layout_margin="6dp"
+        android:id="@+id/fab"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_foreground"
+            android:id="@+id/image"
+            />
+
+
+    </android.support.v7.widget.CardView>
+
+    <az.plainpie.PieView
+        android:id="@+id/pieView"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        plainpie:inner_pie_padding="10"
+        plainpie:percentage="75"
+        plainpie:percentage_size="2"
+        plainpie:inner_text_visibility="true"
+        app:layout_constraintRight_toLeftOf="@+id/bt_detail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_dreamtitle"
+        android:text="NewYorkに行って仕事してマンハッタンでカクテル飲む絶対。"
+        android:layout_marginLeft="20dp"
+        android:width="200dp"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:textFontWeight="bold"
+        android:background="@drawable/border_bottom_2"
+        app:layout_constraintTop_toTopOf="@+id/fab"
+        app:layout_constraintBottom_toTopOf="@+id/deadline"
+        app:layout_constraintLeft_toRightOf="@+id/fab"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deadline"
+        android:text="deadline 2018/05/12"
+        app:layout_constraintTop_toBottomOf="@+id/text_dreamtitle"
+        app:layout_constraintBottom_toBottomOf="@+id/fab"
+        app:layout_constraintLeft_toLeftOf="@+id/text_dreamtitle"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="残り(85日)"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/rest"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintLeft_toRightOf="@+id/deadline"
+        app:layout_constraintTop_toTopOf="@+id/deadline"
+
+        />
+
+
+
+
+
+    <ImageButton
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@drawable/icons8_forward_480"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp"
+        android:id="@+id/bt_detail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+    <!---->
+    <!--</android.support.v7.widget.CardView>-->
+
+</android.support.constraint.ConstraintLayout>

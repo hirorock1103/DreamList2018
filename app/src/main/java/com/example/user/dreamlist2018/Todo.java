@@ -7,6 +7,7 @@ public class Todo {
     private int dreamId;
     private String description;
     private int isFinished;
+    private String deadline;
     private int percentage;
     private String createdate;
 
@@ -65,5 +66,13 @@ public class Todo {
 
     public void setCreatedate(String createdate) {
         this.createdate = createdate;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 }

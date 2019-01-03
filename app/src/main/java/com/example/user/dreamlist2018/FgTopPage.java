@@ -26,12 +26,9 @@ public class FgTopPage extends Fragment {
     Button bt_open_test;
 
     //top page
-    TextView textDreamTitle;
-    RecyclerView listView_1;
     ImageButton bt_add_dream;
     ImageButton bt_dream_list;
     FgNoticeListener listener;
-    TopicAdapter adapter;
 
 
     @Nullable
@@ -87,17 +84,6 @@ public class FgTopPage extends Fragment {
                 }
             });
 
-            //data
-            List<DashBoard.Topics> list = new ArrayList<>();
-            list = new DashBoard.TopicCreater(getContext()).getTopics();
-
-            listView_1 = view.findViewById(R.id.recycler_view_1);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-            listView_1.setLayoutManager(linearLayoutManager);
-            adapter = new TopicAdapter(list);
-            listView_1.setAdapter(adapter);
-
-
         }
 
         return view;
@@ -120,28 +106,6 @@ public class FgTopPage extends Fragment {
         dialog.show(getActivity().getSupportFragmentManager(), "fragment");
     }
 
-    //dialogからの結果
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == 37){
-            //dialog 1 からの結果
-            Common.toast(getContext(), "result:" + resultCode);
-            if(resultCode == Activity.RESULT_OK){
-
-                //通知結果に問題ない場合、画面を更新する。
-                //data
-                List<DashBoard.Topics> list = new ArrayList<>();
-                list = new DashBoard.TopicCreater(getContext()).getTopics();
-
-                adapter.setList(list);
-                adapter.notifyDataSetChanged();
-
-            }
-        }
-
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -154,50 +118,6 @@ public class FgTopPage extends Fragment {
 
     }
 
-    //Honaban
-    public class TopisViewHolder extends RecyclerView.ViewHolder{
-
-        TextView topics;
-
-        public TopisViewHolder(@NonNull View itemView) {
-            super(itemView);
-            topics = itemView.findViewById(R.id.topics);
-        }
-    }
-
-    public class TopicAdapter extends RecyclerView.Adapter<TopisViewHolder>{
-
-        List<DashBoard.Topics> topicsList;
-
-        TopicAdapter(List<DashBoard.Topics> topicsList){
-            this.topicsList = topicsList;
-        }
-
-        public void setList(List<DashBoard.Topics> topicsList){
-            this.topicsList = topicsList;
-        }
-
-        @NonNull
-        @Override
-        public TopisViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            View view = inflater.inflate(R.layout.list_view_item1, viewGroup, false);
-
-            return new TopisViewHolder(view);
-
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull TopisViewHolder topisViewHolder, int i) {
-            topisViewHolder.topics.setText(topicsList.get(i).getTitle());
-        }
-
-        @Override
-        public int getItemCount() {
-            return topicsList.size();
-        }
-    }
 
     //Activity側への通知
     public interface FgNoticeListener{

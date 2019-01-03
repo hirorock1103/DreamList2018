@@ -5,6 +5,7 @@ public class Dream {
     private int id;
     private String title;
     private String description;
+    private byte[] image;
     private String deadline;
     private String createdate;
 
@@ -46,5 +47,13 @@ public class Dream {
 
     public void setCreatedate(String createdate) {
         this.createdate = createdate;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

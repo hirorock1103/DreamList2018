@@ -1,7 +1,9 @@
 package com.example.user.dreamlist2018;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -95,6 +97,17 @@ public class Common {
 
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
 
+    }
+
+    public static class ActionManager{
+
+        public void setKeyBoardHide(Context context, ConstraintLayout layout){
+
+            InputMethodManager inputMethodManager = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(layout.getWindowToken(), inputMethodManager.HIDE_NOT_ALWAYS);
+            layout.requestFocus();
+
+        }
     }
 
 }

@@ -6,13 +6,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDbHelper extends SQLiteOpenHelper {
 
-    private final static int DBVERSION = 1;
+    private final static int DBVERSION = 3;
     private final static String DBNAME = "Dreamlist.db";
 
     protected final static String TABLE_DREAM = "Dream";
     protected final static String DREAM_COLUMN_ID = "id";
     protected final static String DREAM_COLUMN_TITLE = "title";
     protected final static String DREAM_COLUMN_DESCRIPTION = "description";
+    protected final static String DREAM_COLUMN_IMAGE = "image";
     protected final static String DREAM_COLUMN_DEADLINE = "deadline";
     protected final static String DREAM_COLUMN_CREATEDATE = "createdate";
 
@@ -21,6 +22,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
     protected final static String TODO_COLUMN_TITLE = "title";
     protected final static String TODO_COLUMN_DREAMID = "dream_id";
     protected final static String TODO_COLUMN_DESCRIPTION = "description";
+    protected final static String TODO_COLUMN_DEADLINE = "deadline";
     protected final static String TODO_COLUMN_ISFINISHED = "is_finished";
     protected final static String TODO_COLUMN_PERCENTAGE = "percentage";
     protected final static String TODO_COLUMN_CREATEDATE = "createdate";
@@ -49,6 +51,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                 DREAM_COLUMN_ID + " integer primary key autoincrement," +
                 DREAM_COLUMN_TITLE + " text," +
                 DREAM_COLUMN_DESCRIPTION + " text," +
+                DREAM_COLUMN_IMAGE + " blob," +
                 DREAM_COLUMN_DEADLINE + " text," +
                 DREAM_COLUMN_CREATEDATE + " text" +
                 ")";
@@ -61,6 +64,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                 TODO_COLUMN_TITLE + " text," +
                 TODO_COLUMN_DREAMID + " integer default 0," +
                 TODO_COLUMN_DESCRIPTION + " text," +
+                TODO_COLUMN_DEADLINE + " text," +
                 TODO_COLUMN_ISFINISHED + " integer default 0, " +
                 TODO_COLUMN_PERCENTAGE + " integer default 0, " +
                 TODO_COLUMN_CREATEDATE + " text " +
